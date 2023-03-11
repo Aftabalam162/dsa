@@ -1,0 +1,64 @@
+Ques: Given an integer array nums, find the subarray with the largest sum, and return its sum.
+
+Example:
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+
+Ans: 
+
+Prefix Array Method:
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+      
+       
+       int [] prefix = new int[nums.length];
+       int len = nums.length;
+       int max = Integer.MIN_VALUE;
+       int sum = 0;
+       int counter = 0;
+    
+        
+        if (len == 1) {
+            return nums[0];
+        }
+       
+       for (int i = 0; i < len; i++) {
+           sum = sum + nums[i];
+           prefix[i] = sum;
+           
+           if (nums[i] < 0) {
+               counter++;
+               if (nums[i] > max) {
+                   max = nums[i];
+               }
+           }
+       }
+        
+        if (counter == len) {
+            return max;
+        }
+       
+       
+       
+       for (int j = 0; j < len; j++) {
+           for (int k = j; k < len; k++) {
+               // single element condition
+               if (j == k) {
+                   if (prefix[j] > max) {
+                       max = prefix[j];
+                   }
+               }
+               
+               int diff = prefix[k] - prefix[j];
+               
+               if (diff > max) {
+                   max = diff;
+               }
+           }
+       }
+       
+       return max;
+}}
