@@ -1,0 +1,27 @@
+Ques: You are given a string s. You need to reverse the string.
+
+Example:
+
+Input:
+s = Geeks
+Output: skeeG
+
+
+Ans: class Reverse
+{
+    // Complete the function
+    // str: input string
+    public static String reverseWord(String str)
+    {
+        StringBuffer rev = new StringBuffer("");
+        int len = str.length();
+        
+        for (int i = len - 1; i >= 0; i--) {
+            char ch = str.charAt(i);
+            rev.append(ch);
+        }
+    
+    return rev.toString();
+        
+    }
+}
