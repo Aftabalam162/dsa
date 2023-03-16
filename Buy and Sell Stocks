@@ -22,4 +22,24 @@ public static int StocksProfit(int [] arr) {
   }
   
   
+  (Optimized Approach) 
   
+  public static int StocksProfit(int [] arr) {
+        
+        int buyingPrice = arr[0];
+        int maxProfit = 0;
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (buyingPrice < arr[i]) {
+                int curProfit = arr[i] - buyingPrice;
+                if (curProfit > maxProfit) {
+                    maxProfit = curProfit;
+                }
+            } else {
+                buyingPrice = arr[i];
+                // updating the price to make profits in the future 
+                // similar to what if I buy stock today
+            }
+        }
+        return maxProfit;
+    }
