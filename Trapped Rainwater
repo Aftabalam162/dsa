@@ -1,0 +1,30 @@
+Ques: Given n non-negative integers representing an elevation map where the edge of each bar is 1, 
+compute how much water can it trap after the raining.
+
+Answer: 
+    
+    public static int Solution(int arr[]) {
+        int len = arr.length;
+        int trappedWater = 0;
+        int leftmax [] = new int[len];
+        leftmax[0] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            leftmax[i] = Math.max(leftmax[i-1], arr[i]);
+        }
+        
+        int rightmax[] = new int[len];
+        rightmax[len-1] = arr[len-1];
+        for(int j = arr.length-2; j >= 0; j--)
+        {
+            rightmax[j] = Math.max(rightmax[j+1], arr[j]);
+        }
+        
+        for(int j =0; j < len; j++) {
+            int waterlevel = Math.min(leftmax[j], rightmax[j]);
+            trappedWater = trappedWater + (waterlevel - arr[j]);
+        }
+        
+        return trappedWater;
+    }
+
+Note: Edge cases are not fixed in this solution
