@@ -1,0 +1,18 @@
+// insertion sort
+
+arr = [3, 1, 6, 7, 2]
+
+for i in range(1,len(arr)):
+    j = i - 1
+    while j >= 0 and arr[j] > arr[j+1]:
+        arr[j], arr[j+1] = arr[j+1],arr[j]
+        j = j - 1
+        
+print(arr)
+
+// insertion sort where assume the first element of array is already sorted
+// so we just loop over the rest of the array and create a 'j' variable that will track
+// the previous element to 'i'. while j is not <= 0 we continue comparing all the elements before
+// the 'i' variable. Need two loops so the worst complexity is theta(n^2)
+
+
